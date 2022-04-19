@@ -3,26 +3,6 @@
   <div class="container">
       <div id="footer-widgets">
           <div class="row">
-              <div class="col-md-2 widget-container">
-                  <div class="widget widget_social_icons">
-                      <ul>
-                          <li>
-                              <a class="facebook" href="#" target="_blank">
-                                  <span>
-                                      <i class="fa-brands fa-facebook fa-flip" style="--fa-animation-duration: 3s;"></i>
-                                  </span>
-                              </a>
-                          </li>
-                          <li>
-                              <a class="google" href="#" target="_blank">
-                                  <span>
-                                          <i class="fa fa-google-plus fa-flip" style="--fa-animation-duration: 3s;"></i>
-                                      </span>
-                              </a>
-                          </li>
-                      </ul>
-                  </div>
-              </div>
               <div class="col-md-4 col-sm-6 widget-container">
                   <div id="text-2" class="widget widget_text">
                       <h3 class="footer-widget-title">About Uva Collage</h3>
@@ -47,7 +27,7 @@
                   </div>
               </div>
               <div class="clearfix hidden-lg hidden-md hidden-xs tablet-margin-bottom"></div>
-              <div class="col-md-2 col-sm-6 widget-container">
+              <div class="col-md-4 col-sm-6 widget-container">
                   <div id="text-4" class="widget widget_text">
                       <h3 class="footer-widget-title">Timing</h3>
                       <span class="underline left"></span>
