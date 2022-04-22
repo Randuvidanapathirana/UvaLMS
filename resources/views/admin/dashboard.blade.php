@@ -389,7 +389,7 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>ST Index here</td>
+                                                    <td><a href=""> ST Index here</a></td>
                                                     <td>student name</td>
                                                     <td>student Grade here</td>
                                                     <td>
@@ -398,7 +398,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>ST Index here</td>
+                                                    <td><a href=""> ST Index here</a></td>
                                                     <td>student name</td>
                                                     <td>student Grade here</td>
                                                     <td>

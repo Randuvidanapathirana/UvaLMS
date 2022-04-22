@@ -121,13 +121,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link active">
+                                    <a href="#" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Issue new Book</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/issued-Books" class="nav-link">
+                                    <a href="/issued-Books" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Manage issued Books</p>
                                     </a>
