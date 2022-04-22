@@ -24,15 +24,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', [timeTableController::class, 'index']);
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
+    Route::get('/', [timeTableController::class, 'index']);
+    Route::view('/test','admin/test');
+});
+
+// Route::get('/admin', [timeTableController::class, 'index']);
 Route::view('/listed-Books','admin/pages/listedBook');
 Route::view('/damaged-Books','admin/pages/damagedBooks');
 Route::view('/issued-Books','admin/pages/issuedBooks');
 Route::view('/borrow-req-Books','admin/pages/borrowReq');
 Route::view('/addBook','admin/pages/addNewBook');
+
 Route::view('/books-gride','books-gride-view');
 
-Route::view('/test','admin/test');
 
 
 

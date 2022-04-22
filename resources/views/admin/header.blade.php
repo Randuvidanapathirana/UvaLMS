@@ -1,6 +1,6 @@
 <!-- Preloader -->
 <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="dist/img/logo.png" alt="AdminSchoolLogo" height="90" width="90">
+    <img class="animation__wobble" src="{{ asset('dist/img/logo.png') }}" alt="AdminSchoolLogo" height="90" width="90">
 </div>
 
 <!-- Navbar -->
@@ -54,7 +54,7 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message view Start -->
                     <div class="media">
-                        <img src="dist/img/avatar5.png" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                        <img src="{{ asset('dist/img/avatar5.png') }}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 Student/user name display here
@@ -80,7 +80,7 @@
                 <a href="#" class="dropdown-item">
                     <!-- notification view Start -->
                     <div class="media">
-                        <img src="dist/img/avatar5.png" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                        <img src="{{ asset('dist/img/avatar5.png')}}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 Student/user name display here

@@ -28,7 +28,6 @@
             <!-- School Logo -->
             <a href="#" class="brand-link">
                 <img src="dist/img/schoolLogo.png" alt="School Logo" height="50px">
-                <span class="brand-text font-weight-light"><B>Admin</B></span>
             </a>
 
             <!-- Sidebar -->
@@ -44,7 +43,7 @@
                 </div>
 
                 <!-- Sidebar Menu -->
-                <nav class="mt-2">
+                <nav>
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li class="nav-item">
                             <a href="/admin" class="nav-link ">
@@ -55,13 +54,29 @@
                             </a>
                         </li>
 
+                        <!--user-->
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
-                                    Reg. Student
+                                    Users
+                                    <i class="right fa-solid fa-angles-left"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>User Details</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add new user</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
 
                         <!--Books-->
@@ -70,7 +85,7 @@
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
                                     Books
-                                    <i class="right fas fa-angle-left"></i>
+                                    <i class="right fa-solid fa-angles-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -97,11 +112,11 @@
 
                         <!--Issue books-->
                         <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-edit"></i>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa-solid fa-book-bookmark"></i>
                                 <p>
                                     Issue books
-                                    <i class="right fas fa-angle-left"></i>
+                                    <i class="right fa-solid fa-angles-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -112,7 +127,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/issued-Books" class="nav-link ">
+                                    <a href="/issued-Books" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Manage issued Books</p>
                                     </a>
@@ -132,7 +147,7 @@
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Categories
-                                    <i class="right fas fa-angle-left"></i>
+                                    <i class="right fa-solid fa-angles-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -157,7 +172,7 @@
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     Authors
-                                    <i class="right fas fa-angle-left"></i>
+                                    <i class="right fa-solid fa-angles-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -179,7 +194,6 @@
                     </ul>                    
                 </nav>
             </div><!--end Sidebar -->
-
         </aside><!-- End of Main Sidebar Container -->
 
         <!-- Content Wrapper. Contains page content -->
