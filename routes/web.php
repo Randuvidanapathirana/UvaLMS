@@ -37,6 +37,8 @@ Route::view('/borrow-req-Books','admin/pages/borrowReq');
 Route::view('/addBook','admin/pages/addNewBook');
 
 Route::view('/books-gride','books-gride-view');
+Route::view('/subject-books','sub-books');
+
 
 
 

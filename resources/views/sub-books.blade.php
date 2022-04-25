@@ -65,8 +65,8 @@
                             <div class="navbar-collapse hidden-sm hidden-xs">
                                 <ul class="nav navbar-nav">
                                     <li><a href="#">Home</a></li>
-                                    <li class="active"><a href="books-gride">Books</a></li>
-                                    <li><a href="/subject-books">Subjects</a></li>
+                                    <li><a href="books-gride">Books</a></li>
+                                    <li class="active"><a href="/subject-books">Subjects</a></li>
                                     <li class="dropdown">
                                         <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#">Categories</a>
                                         <ul class="dropdown-menu">
@@ -98,8 +98,8 @@
                                     <a href="#" class="close"></a>
                                 </li>
                                 <li><a href="#">Home</a></li>
-                                <li class="active"><a href="books-gride">Books</a></li>
-                                <li><a href="sub-books">Subjects</a></li>      
+                                <li><a href="books-gride">Books</a></li>
+                                <li class="active"><a href="sub-books">Subjects</a></li>      
                                 <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#">Categories</a>
                                     <ul class="dropdown-menu">
@@ -155,15 +155,7 @@
                             <!-- Start: Search Section -->
                             <section class="search-filters">
                                 <div class="container">
-                                    <div class="filter-box">
-                                        <h3>What are you looking for at the library?</h3>
-                                        <form action="http://libraria.demo.presstigers.com/index.html" method="get">
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="sr-only" for="keywords">Search by Keyword</label>
-                                                    <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
-                                                </div>
-                                            </div>
+                                    <div class="filter-box">                                            
                                             <div class="col-md-3 col-sm-6">
                                                 <div class="form-group">
                                                     <select name="catalog" id="catalog" class="form-control">
@@ -193,47 +185,12 @@
                                                     <input class="form-control" type="submit" value="Search">
                                                 </div>
                                             </div>
-                                        </form>
                                     </div>
                                 </div>
                             </section>
                             <!-- End Search Section -->
                         </div><!--End row-->
 
-                        <!--single book-->
-                        <div class="booksmedia-fullwidth">
-                            <ul>
-                                <li>
-                                    <div class="book-list-icon blue-icon"></div>
-                                    <figure>
-                                        <a href="books-media-detail-v2.html"><img src="images/books-media/layout-3/books-media-layout3-01.jpg" alt="Book"></a>
-                                        <figcaption>
-                                            <header>
-                                                <h4><a href="books-media-detail-v2.html">The Great Gatsby</a></h4>
-                                                <p><strong>Author:</strong>  F. Scott Fitzgerald</p>
-                                                <p><strong>ISBN:</strong>  9781581573268</p>
-                                            </header>
-                                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                            <div class="actions">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Like">
-                                                            <i class="fa fa-heart"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        status
-                                                    </li>
-                                                    <li>
-                                                        <a href="">Borrow</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </figcaption>
-                                    </figure>                                                
-                                </li>
-                            </ul>
-                        </div><!--booksmedia-fullwidth-->
 
                     </div><!--End container-->
                 </div><!--End books-media-gird-->
