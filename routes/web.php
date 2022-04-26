@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\addMemberController;
+use App\Http\Controllers\bookController;
 use App\Http\Controllers\fileUploadController;
 use App\Http\Controllers\timeTableController;
 use App\Http\Controllers\userController;
@@ -27,10 +28,12 @@ Route::get('/', function () {
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
     Route::get('/', [timeTableController::class, 'index']);
     Route::view('/test','admin/test');
+    Route::post('/newBook',[bookController::class, 'addNewBook'])->name('book.add_newbook');
 });
 
 // Route::get('/admin', [timeTableController::class, 'index']);
-Route::view('/listed-Books','admin/pages/listedBook');
+Route::get('/listed-Books',[bookController::class, 'adminBookList']);
+
 Route::view('/damaged-Books','admin/pages/damagedBooks');
 Route::view('/issued-Books','admin/pages/issuedBooks');
 Route::view('/borrow-req-Books','admin/pages/borrowReq');

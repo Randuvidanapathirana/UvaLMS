@@ -6,33 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Panel | Add New Book | UvaLMS</title>
 
-    <!--favicon icons-->
-    <link rel="shortcut icon" href="favicon/icon.png" type="image/x-icon" />
-
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/adminlte.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- JQVMap -->
-    <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-    <!-- summernote -->
-    <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+    {{-- include styles --}}
+    @include('admin.plugins.style')
 
 
 </head>
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="hold-transition dark-mode sidebar-mini layout-fixed">
     <div class="wrapper">
         {{-- include header  --}}
         @include('admin/header')
@@ -233,12 +212,16 @@
                     <div class="row">
                         <div class="col-md-6">
 
+                            @if (session('status'))
+                                <h5 class="alert alert-success">{{ session('status') }}</h5>
+                            @endif
+
                             <!--form-->
                             <div class="card card-success">
                                 <div class="card-header">
                                   <h3 class="card-title">Add Book</h3>
                                 </div>
-                                <form method="POST" action="">
+                                <form method="POST" action="{{ route('book.add_newbook') }}">
                                     @csrf
                                   <div class="card-body">
                                     <p>Last Registered Book ID: </p>
@@ -252,21 +235,31 @@
                                         <input type="text" name="bookName" class="form-control" id="bookName" placeholder="Enter book Name" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="authorId">Author ID</label>
-                                        <input type="text" name="authorid" class="form-control" id="authorId" placeholder="Enter author ID" required>
+                                        <label for="authorId">Book Description</label>
+                                        <textarea name="book-desc" id="book-desc" cols="30" rows="5" class="form-control" placeholder="Enter Book Description" required></textarea>
                                     </div>
-                                    
                                     <div class="form-group">
-                                      <label for="exampleInputFile">Book Image</label>
-                                      <div class="input-group">
-                                        <div class="custom-file">
-                                          <input type="file" name="bookimg" class="custom-file-input" id="formFile" required>
-                                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                        </div>
-                                        <div class="input-group-append">
-                                          <span class="input-group-text">Upload</span>
-                                        </div>
-                                      </div>
+                                        <label for="authorId">Author Name</label>
+                                        <input type="text" name="authorName" class="form-control" id="authorId" placeholder="Enter author Name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="authorId">Category</label>
+                                        <select name="categoryId" class="form-select form-control" size="3" aria-label="size 3 select example" required>
+                                            <option value="000" disabled="disabled">Book Categories</option>
+                                            <option value="100">General Books | සාමාන්‍ය කෘති</option>
+                                            <option value="200">Philosophy and Psychology | දර්ශනය සහ මනෝ විද්‍යාව</option>
+                                            <option value="300">Religion | ආගම</option>
+                                            <option value="400">Language | භාෂාව</option>
+                                            <option value="500">Natural science and maths | ස්වාභාව විද්‍යාව සහ ගණිතය</option>
+                                            <option value="600">Technology | තාක්ෂණ විද්‍යා</option>
+                                            <option value="700">Art | කලා</option>
+                                            <option value="800">Literature | සාහිත්‍ය</option>
+                                            <option value="900">Geography | භූගෝල විද්‍යාව</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="authorId">Book image path: book-images/</label>
+                                        <input type="text" name="bookImage" class="form-control" id="authorId" placeholder="Enter book image path (ex: categoryFolderName/image.jpg) " required>
                                     </div>
                                     <div class="form-check">
                                       <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -299,85 +292,8 @@
         @include('admin/footer')
     </div><!--wrapper-->
 
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-        $.widget.bridge('uibutton', $.ui.button)
-    </script>
-    
-
-    {{-- qr generate --}}
-    <script>
-        function generate(){
-            var typeNumber = 4;
-            var errorCorrectionLevel = 'L';
-            var qr = qrcode(typeNumber, errorCorrectionLevel);
-            var inputText = document.getElementById('bookId').value;
-            qr.addData(inputText);
-            qr.make();
-            document.getElementById('placeHolder').innerHTML = qr.createImgTag();
-
-            canvasScreen();
-            canvas.style.width = canvasWidth;
-            canvas.style.height = canvasHeight;
-        }
-
-        downloadQrCode = function (el){
-            var canvas = document.getElementById("myCanvas");
-            var image = canvas.toDataURL("image/png");
-            el.href = image;
-        };
-
-        function canvasScreen(){
-            var a=document.getElementsByTagName("img")[0];
-            a.setAttribute("id","qrcode");
-            
-            var canvas = document.getElementById("myCanvas");
-            
-
-            var ctx = canvas.getContext("2d");
-            var img = document.getElementById("qrcode");
-            ctx.drawImage(img,70,0,150,150);
-            
-            document.getElementById("dBtn").style.display="block";
-            
-        }
-    </script>
-
-
-    <!-- jQuery -->
-    <script src="plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- overlayScrollbars -->
-    <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <!-- Uva collage app -->
-    <script src="dist/js/adminlte.js"></script>
-    <!-- jQuery Mapael -->
-    <script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-    <script src="plugins/raphael/raphael.min.js"></script>
-    <script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
-    <script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>
-    <!-- Sparkline -->
-    <script src="plugins/sparklines/sparkline.js"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
-    <!-- daterangepicker -->
-    <script src="plugins/moment/moment.min.js"></script>
-    <script src="plugins/daterangepicker/daterangepicker.js"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-    <!-- Summernote -->
-    <script src="plugins/summernote/summernote-bs4.min.js"></script>
-
-    <!-- jQuery UI 1.11.4 -->
-    <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-
-    <!--ar code-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.1/qrcode.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    {{-- include script --}}
+    @include('admin.plugins.script')
 
 </body>
 </html>

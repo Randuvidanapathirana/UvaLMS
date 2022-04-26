@@ -64,7 +64,7 @@
                             </div>
                             <div class="navbar-collapse hidden-sm hidden-xs">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="#">Home</a></li>
+                                    <li><a href="/">Home</a></li>
                                     <li class="active"><a href="books-gride">Books</a></li>
                                     <li><a href="/subject-books">Subjects</a></li>
                                     <li class="dropdown">
@@ -97,7 +97,7 @@
                                     <h4>Navigation</h4>
                                     <a href="#" class="close"></a>
                                 </li>
-                                <li><a href="#">Home</a></li>
+                                <li><a href="/">Home</a></li>
                                 <li class="active"><a href="books-gride">Books</a></li>
                                 <li><a href="sub-books">Subjects</a></li>      
                                 <li class="dropdown">
@@ -152,12 +152,15 @@
                 <div class="books-media-gird">
                     <div class="container">
                         <div class="row">
-                            <!-- Start: Search Section -->
+                            <!-- Start Search Section -->
                             <section class="search-filters">
                                 <div class="container">
                                     <div class="filter-box">
-                                        <h3>What are you looking for at the library?</h3>
-                                        <form action="http://libraria.demo.presstigers.com/index.html" method="get">
+                                        <h3 style="margin-bottom: 0%;">What are you looking for at the library?</h3>
+                                        <h3 style="margin-bottom: 0%; font-size: 22pt;" >ඔබ පුස්තකාලයේ සොයන්නේ කුමක්ද?</h3>
+                                        <h3 style="font-size: 17pt;">நூலகத்தில் என்ன தேடுகிறீர்கள்?</h3>
+                                        <form action="#" method="get">
+                                            <div class="col-md-2 col-sm-6"></div>
                                             <div class="col-md-4 col-sm-6">
                                                 <div class="form-group">
                                                     <label class="sr-only" for="keywords">Search by Keyword</label>
@@ -166,25 +169,17 @@
                                             </div>
                                             <div class="col-md-3 col-sm-6">
                                                 <div class="form-group">
-                                                    <select name="catalog" id="catalog" class="form-control">
-                                                        <option>Search the Catalog</option>
-                                                        <option>Catalog 01</option>
-                                                        <option>Catalog 02</option>
-                                                        <option>Catalog 03</option>
-                                                        <option>Catalog 04</option>
-                                                        <option>Catalog 05</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3 col-sm-6">
-                                                <div class="form-group">
                                                     <select name="category" id="category" class="form-control">
-                                                        <option>All Categories</option>
-                                                        <option>Category 01</option>
-                                                        <option>Category 02</option>
-                                                        <option>Category 03</option>
-                                                        <option>Category 04</option>
-                                                        <option>Category 05</option>
+                                                        <option value="" disabled="disabled">All Categories</option>
+                                                        <option value="">General Books|සාමාන්‍ය කෘති</option>
+                                                        <option value="">Philosophy and Psychology|<br>දර්ශනය සහ මනෝ විද්‍යාව</option>
+                                                        <option value="">Religion|ආගම</option>
+                                                        <option value="">Language|භාෂාව</option>
+                                                        <option value="">Natural science and maths|<br>ස්වාභාව විද්‍යාව සහ ගණිතය</option>
+                                                        <option value="">Technology|තාක්ෂණ විද්‍යා</option>
+                                                        <option value="">Art|කලා</option>
+                                                        <option value="">Literature|සාහිත්‍ය</option>
+                                                        <option value="">Geography|භූගෝල විද්‍යාව</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -197,7 +192,7 @@
                                     </div>
                                 </div>
                             </section>
-                            <!-- End Search Section -->
+                            <!-- /Search Section -->
                         </div><!--End row-->
 
                         <!--single book-->

@@ -64,38 +64,32 @@
                                         <ul class="nav navbar-nav">
                                             <li class="active"><a href="#">Home</a></li>
                                             <li><a href="books-gride">Books</a></li>
-                                            <li class="dropdown">
-                                                <a data-toggle="dropdown" class="dropdown-toggle disabled" href="books-gride">Subjects</a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="#">Sinhala</a></li>
-                                                    <li><a href="#">Science</a></li>
-                                                    <li><a href="#">Maths</a></li>
-                                                    <li><a href="#">Buddhism</a></li>
-                                                    <li><a href="#">History</a></li>
-                                                    <li><a href="#">English</a></li>
-                                                    <li><a href="#">Geography</a></li>
-                                                    <li><a href="#">Econ</a></li>
-                                                    <li><a href="#">Music</a></li>
-                                                    <li><a href="#">Drama</a></li>
-                                                    <li><a href="#">Art</a></li>
-                                                    <li><a href="#">ICT</a></li>
-                                                    <li><a href="#">Media</a></li>
-                                                </ul>
-                                            </li>
+                                            <li><a href="/subject-books">Subjects</a></li>
                                             <li class="dropdown">
                                                 <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#">Categories</a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="#">category 1</a></li>
-                                                    <li><a href="#">category 2</a></li>
+                                                    <li><a href="#">General Books|සාමාන්‍ය කෘති</a></li>
+                                                    <li><a href="#">Philosophy and Psychology|<br>දර්ශනය සහ මනෝ විද්‍යාව</a></li>
+                                                    <li><a href="#">Religion|ආගම</a></li>
+                                                    <li><a href="#">Language|භාෂාව</a></li>
+                                                    <li><a href="#">Natural science and maths|<br>ස්වාභාව විද්‍යාව සහ ගණිතය</a></li>
+                                                    <li><a href="#">Technology|තාක්ෂණ විද්‍යා</a></li>
+                                                    <li><a href="#">Art|කලා</a></li>
+                                                    <li><a href="#">Literature|සාහිත්‍ය</a></li>
+                                                    <li><a href="#">Geography|භූගෝල විද්‍යාව</a></li>
                                                 </ul>
                                             </li>
                                             <li class="dropdown">
                                                 <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#">languages</a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="#">Sinhala</a></li>
-                                                    <li><a href="#">Tamil</a></li>
-                                                    <li><a href="#">English</a></li>
-                    
+                                                    <li><a href="#">American Literature|<br>ඇමෙරිකානු සාහිත්‍ය</a></li>
+                                                    <li><a href="#">English Literature|<br>ඉංග්‍රීසි සාහිත්‍ය</a></li>
+                                                    <li><a href="#">German literature|<br>ජර්මන් සාහිත්‍ය</a></li>
+                                                    <li><a href="#">French literature|<br>ප්‍රංශ සාහිත්‍ය</a></li>
+                                                    <li><a href="#">Italian literature|<br>ඉතාලි සාහිත්‍ය</a></li>
+                                                    <li><a href="#">Latin literature|<br>ලතින් සාහිත්‍ය</a></li>
+                                                    <li><a href="#">Greek literature|<br>ග්‍රීක සාහිත්‍ය</a></li>
+                                                    <li><a href="#">spanish literature|<br>ස්පාඤ්ඤ සාහිත්‍ය</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="#">Contact</a></li>
@@ -114,39 +108,33 @@
                                     <h4>Navigation</h4>
                                     <a href="#" class="close"></a>
                                 </li>
-                                <li><a href="#">Home</a></li>
-                                <li>
-                                    <a href="#">Subjects</a>
-                                    <ul>
-                                        <li><a href="#">Sinhala</a></li>
-                                        <li><a href="#">Science</a></li>
-                                        <li><a href="#">Maths</a></li>
-                                        <li><a href="#">Buddhism</a></li>
-                                        <li><a href="#">History</a></li>
-                                        <li><a href="#">English</a></li>
-                                        <li><a href="#">Geography</a></li>
-                                        <li><a href="#">Econ</a></li>
-                                        <li><a href="#">Music</a></li>
-                                        <li><a href="#">Drama</a></li>
-                                        <li><a href="#">Art</a></li>
-                                        <li><a href="#">ICT</a></li>
-                                        <li><a href="#">Media</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/subject-books">Subjects</a></li>
                                 <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#">Categories</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">category 1</a></li>
-                                        <li><a href="#">category 2</a></li>
+                                        <li><a href="#">General Books|සාමාන්‍ය කෘති</a></li>
+                                        <li><a href="#">Philosophy and Psychology|<br>දර්ශනය සහ මනෝ විද්‍යාව</a></li>
+                                        <li><a href="#">Religion|ආගම</a></li>
+                                        <li><a href="#">Language|භාෂාව</a></li>
+                                        <li><a href="#">Natural science and maths|<br>ස්වාභාව විද්‍යාව සහ ගණිතය</a></li>
+                                        <li><a href="#">Technology|තාක්ෂණ විද්‍යා</a></li>
+                                        <li><a href="#">Art|කලා</a></li>
+                                        <li><a href="#">Literature|සාහිත්‍ය</a></li>
+                                        <li><a href="#">Geography|භූගෝල විද්‍යාව</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#">languages</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">Sinhala</a></li>
-                                        <li><a href="#">Tamil</a></li>
-                                        <li><a href="#">English</a></li>
-        
+                                        <li><a href="#">American Literature|<br>ඇමෙරිකානු සාහිත්‍ය</a></li>
+                                        <li><a href="#">English Literature|<br>ඉංග්‍රීසි සාහිත්‍ය</a></li>
+                                        <li><a href="#">German literature|<br>ජර්මන් සාහිත්‍ය</a></li>
+                                        <li><a href="#">French literature|<br>ප්‍රංශ සාහිත්‍ය</a></li>
+                                        <li><a href="#">Italian literature|<br>ඉතාලි සාහිත්‍ය</a></li>
+                                        <li><a href="#">Latin literature|<br>ලතින් සාහිත්‍ය</a></li>
+                                        <li><a href="#">Greek literature|<br>ග්‍රීක සාහිත්‍ය</a></li>
+                                        <li><a href="#">spanish literature|<br>ස්පාඤ්ඤ සාහිත්‍ය</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">Contact</a></li>
@@ -227,6 +215,7 @@
                 <h3 style="margin-bottom: 0%; font-size: 22pt;" >ඔබ පුස්තකාලයේ සොයන්නේ කුමක්ද?</h3>
                 <h3 style="font-size: 17pt;">நூலகத்தில் என்ன தேடுகிறீர்கள்?</h3>
                 <form action="#" method="get">
+                    <div class="col-md-2 col-sm-6"></div>
                     <div class="col-md-4 col-sm-6">
                         <div class="form-group">
                             <label class="sr-only" for="keywords">Search by Keyword</label>
@@ -235,33 +224,17 @@
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="form-group">
-                            <select name="catalog" id="catalog" class="form-control">
-                                <option value="" disabled="disabled">Search the Subject</option>
-                                <option value="Sinhala">Sinhala</option>
-                                <option value="Science">Science</option>
-                                <option value="Maths">Maths</option>
-                                <option value="Buddhism">Buddhism</option>
-                                <option value="History">History</option>
-                                <option value="English">English</option>
-                                <option value="Geography">Geography</option>
-                                <option value="Econ">Econ</option>
-                                <option value="Music">Music</option>
-                                <option value="Drama">Drama</option>
-                                <option value="Art">Art</option>
-                                <option value="ICT">ICT</option>
-                                <option value="Media">Media</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="form-group">
                             <select name="category" id="category" class="form-control">
-                                <option value="" disabled="disabled">All Categories</option>
-                                <option value="">Category 01</option>
-                                <option value="">Category 02</option>
-                                <option value="">Category 03</option>
-                                <option value="">Category 04</option>
-                                <option value="">Category 05</option>
+                                <option value="000" disabled="disabled">All Categories</option>
+                                <option value="100">General Books|සාමාන්‍ය කෘති</option>
+                                <option value="200">Philosophy and Psychology|<br>දර්ශනය සහ මනෝ විද්‍යාව</option>
+                                <option value="300">Religion|ආගම</option>
+                                <option value="400">Language|භාෂාව</option>
+                                <option value="500">Natural science and maths|<br>ස්වාභාව විද්‍යාව සහ ගණිතය</option>
+                                <option value="600">Technology|තාක්ෂණ විද්‍යා</option>
+                                <option value="700">Art|කලා</option>
+                                <option value="800">Literature|සාහිත්‍ය</option>
+                                <option value="900">Geography|භූගෝල විද්‍යාව</option>
                             </select>
                         </div>
                     </div>
@@ -285,7 +258,7 @@
                         <i class="yellow"></i>
                         <h3>Books</h3>
                         <p>You can choose your favorite books<br>ඔබට ඔබේ ප්‍රියතම පොත් තෝරා ගත හැකිය<br>புத்தகங்கள்</p>
-                        <a class="yellow" href="#">
+                        <a class="yellow" href="/books-gride">
                             View Selection <i class="fa fa-long-arrow-right"></i>
                         </a>
                     </div>

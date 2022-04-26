@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -230,6 +231,7 @@
                                     <thead>
                                         <tr>
                                             <th>Book ID</th>
+                                            <th>Book Image</th>
                                             <th>Book Name</th>
                                             <th>Author Name</th>
                                             <th>Status</th>
@@ -237,42 +239,31 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Book1</td>
-                                            <td>Sithum Pathum</td>
-                                            <td>Mr. Kamal</td>
-                                            <td style="color: green">Available</td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-warning">Option</button>
-                                                    <button type="button" class="btn btn-warning dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                      <span class="sr-only">Toggle Dropdown</span>
-                                                    </button>
-                                                    <div class="dropdown-menu" role="menu">
-                                                      <a class="dropdown-item" href="#">Edit</a>
-                                                      <a class="dropdown-item" href="#">Remove</a>
-                                                      <a class="dropdown-item" href="#">Add to damage</a>
-                                                  </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Book2</td>
-                                            <td>Sithum Pathum</td>
-                                            <td>Mr. Kamal</td>
-                                            <td style="color: red">Not Available</td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-warning">Option</button>
-                                                    <button type="button" class="btn btn-warning dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                                                      <span class="sr-only">Toggle Dropdown</span>
-                                                    </button>
-                                                    <div class="dropdown-menu" role="menu">
-                                                      <a class="dropdown-item" href="#">Edit</a>
-                                                      <a class="dropdown-item" href="#">Remove</a>
-                                                      <a class="dropdown-item" href="#">Add to damage</a>
-                                                  </div>
-                                            </td>
-                                        </tr>
+                                        @foreach ($books as $book)
+                                            <tr>
+                                                <td>{{ $book->book_id }}</td>
+                                                <td><img src="{{ $book->book_image }}" alt="{{ $book->book_id }}" width="50px"></td>
+                                                <td>{{ $book->book_name }}</td>
+                                                <td>{{ $book->author_name }}</td>
+                                                @if ( $book->status == "0")
+                                                    <td style="color: green">Available</td>
+                                                @else
+                                                    <td style="color: red">Not Available</td>
+                                                @endif
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-warning">Option</button>
+                                                        <button type="button" class="btn btn-warning dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                                        <span class="sr-only">Toggle Dropdown</span>
+                                                        </button>
+                                                        <div class="dropdown-menu" role="menu">
+                                                        <a class="dropdown-item" href="#">Edit</a>
+                                                        <a class="dropdown-item" href="#">Remove</a>
+                                                        <a class="dropdown-item" href="#">Add to damage</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -299,6 +290,7 @@
 
         {{-- include footer  --}}
         @include('admin/footer')
+        
     </div>
     <!-- ./wrapper -->
 

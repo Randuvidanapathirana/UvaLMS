@@ -64,13 +64,13 @@
                             </div>
                             <div class="navbar-collapse hidden-sm hidden-xs">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="#">Home</a></li>
+                                    <li><a href="/">Home</a></li>
                                     <li><a href="books-gride">Books</a></li>
                                     <li class="active"><a href="/subject-books">Subjects</a></li>
                                     <li class="dropdown">
                                         <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#">Categories</a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#">category 1</a></li>
+                                            <li><a href="#"></a></li>
                                             <li><a href="#">category 2</a></li>
                                         </ul>
                                     </li>
