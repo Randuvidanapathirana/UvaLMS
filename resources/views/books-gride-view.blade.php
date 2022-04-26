@@ -195,40 +195,43 @@
                             <!-- /Search Section -->
                         </div><!--End row-->
 
-                        <!--single book-->
-                        <div class="booksmedia-fullwidth">
-                            <ul>
-                                <li>
-                                    <div class="book-list-icon blue-icon"></div>
-                                    <figure>
-                                        <a href="books-media-detail-v2.html"><img src="images/books-media/layout-3/books-media-layout3-01.jpg" alt="Book"></a>
-                                        <figcaption>
-                                            <header>
-                                                <h4><a href="books-media-detail-v2.html">The Great Gatsby</a></h4>
-                                                <p><strong>Author:</strong>  F. Scott Fitzgerald</p>
-                                                <p><strong>ISBN:</strong>  9781581573268</p>
-                                            </header>
-                                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                            <div class="actions">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Like">
-                                                            <i class="fa fa-heart"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        status
-                                                    </li>
-                                                    <li>
-                                                        <a href="">Borrow</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </figcaption>
-                                    </figure>                                                
-                                </li>
-                            </ul>
-                        </div><!--booksmedia-fullwidth-->
+                        @foreach ($books as $book)
+                            <!--single book-->
+                            <div class="booksmedia-fullwidth">
+                                <ul>
+                                    <li>
+                                        <div class="book-list-icon yellow-icon"></div>
+                                        <figure>
+                                            <a href="books-media-detail-v2.html"><img src="{{ $book->book_image }}" alt="Book"></a>
+                                            <figcaption>
+                                                <header>
+                                                    <h4><a href="books-media-detail-v2.html">{{ $book->book_name }}</a></h4>
+                                                    <p><strong>Author:</strong>{{ $book->author_name }}</p>
+                                                </header>
+                                                <p>{{ $book->book_desc }}</p>
+                                                <div class="actions">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Like">
+                                                                <i class="fa fa-heart"></i>
+                                                            </a>
+                                                        </li>
+                                                        @if ( $book->status == "0")
+                                                            <li style="color: green">Available</li>
+                                                        @else
+                                                            <li style="color: red">Not Available</li>
+                                                        @endif
+                                                        <li>
+                                                            <a href="">Borrow</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </figcaption>
+                                        </figure>                                                
+                                    </li>
+                                </ul>
+                            </div><!--booksmedia-fullwidth-->
+                        @endforeach
 
                     </div><!--End container-->
                 </div><!--End books-media-gird-->

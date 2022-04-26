@@ -26,4 +26,10 @@ class bookController extends Controller
         $books = Book::all();
         return view('admin.pages.listedBook', compact('books'));
     }
+
+    public function userBookList()
+    {
+        $books = Book::all();
+        return view('books-gride-view', compact('books'));
+    }
 }

@@ -32,14 +32,15 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
 });
 
 // Route::get('/admin', [timeTableController::class, 'index']);
-Route::get('/listed-Books',[bookController::class, 'adminBookList']);
+Route::get('/listed-Books',[bookController::class, 'adminBookList'])->name('admin.book.list');
 
 Route::view('/damaged-Books','admin/pages/damagedBooks');
 Route::view('/issued-Books','admin/pages/issuedBooks');
 Route::view('/borrow-req-Books','admin/pages/borrowReq');
 Route::view('/addBook','admin/pages/addNewBook');
 
-Route::view('/books-gride','books-gride-view');
+Route::get('/books-gride',[bookController::class, 'userBookList'])->name('user.book.view');
+
 Route::view('/subject-books','sub-books');
 
 
