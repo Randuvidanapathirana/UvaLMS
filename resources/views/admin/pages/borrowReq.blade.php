@@ -191,6 +191,29 @@
                 <div class="col-sm-6">
                     <h1>Borrow Requests</h1>
                 </div>
+
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            
+            @if(Session::has('success'))
+                <div class="alert alert-success">
+                    <p>
+                        {{ Session::get('success') }}
+                        <button type="button" class="close" data-dismiss="alert"  aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </p>
+            
+                </div>
+            @endif
+
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/admin">Home</a></li>
@@ -215,34 +238,48 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Student Id</th>
-                                            <th>Student Name</th>
-                                            <th>Book ID</th>
-                                            <th>Book Name</th>
-                                            <th>Option</th>
+                                            <td>User ID</td>
+                                            <td>User Name</td>
+                                            <td>Book ID</td>
+                                            <td>Book Name</td>
+                                            <td>Status</td>
+                                            <td>Option</td>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td><a href="#">ST ID here</a></td>
-                                            <td>Student name here</td>
-                                            <td>Book ID here</td>
-                                            <td>Book name here</td>
-                                            <td>
-                                                <button class="btn btn-success">Confirm</button>
-                                                <button class="btn btn-danger">Disline</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">ST ID here</a></td>
-                                            <td>Student name here</td>
-                                            <td>Book ID here</td>
-                                            <td>Book name here</td>
-                                            <td>
-                                                <button class="btn btn-success">Confirm</button>
-                                                <button class="btn btn-danger">Disline</button>
-                                            </td>
-                                        </tr>
+                                        @foreach($books as $book)
+                                            <tr>
+                                                <td>{{ $book->user_id }}</td>
+                                                <td>{{ $book->user_name }}</td>
+                                                <td>{{ $book->book_id}}</td>
+                                                <td>{{ $book->book_name }}</td>
+                                                <td>
+                                                
+                                                    @if ($book->is_approved)
+                                                        <span class="badge badge-success">
+                                                        <i class="fa fa-check"></i> Approved
+                                                        </span>
+                                                    @else
+                                                        <span class="badge badge-danger">
+                                                        <i class="fa fa-times"></i> Not Approved
+                                                        </span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    
+                                                        <form action="{{ route('admin.books.approve', $book->id) }}" method="post">
+                                                            @csrf 
+                                                            <button class="btn btn-success">Confirm </button>
+                                                        </form>
+                                                        
+                                                        <form action="{{ route('admin.books.unapprove', $book->id) }}" method="post">
+                                                            @csrf
+                                                            <button class="btn btn-danger" >Disline </button>
+                                                        </form>
+                                                        
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

@@ -22,6 +22,53 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/gallery.css">
 
+    <!-- Custom CSS -->
+    <link href="{{ asset('css/custom.css') }}?v=1.0.0" rel="stylesheet">
+
+    <style>
+        /* The Modal (background) */
+        .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        }
+
+        /* The Close Button */
+        .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+        }    
+
+        .borrow:hover{
+            color: coral;
+        }
+    </style>
 </head>
 <body>
 
@@ -161,6 +208,8 @@
     </header>
     <!-- End: Header Section -->
 
+    
+
     <!-- Start: Page Banner -->
     <section class="page-banner services-banner">
         <div class="container">
@@ -234,6 +283,8 @@
                             <!-- End Search Section -->
                         </div><!--End row-->
 
+                        @foreach ($books as $book)
+                            
                         <!--single book-->
                         <div class="booksmedia-fullwidth">
                             <ul>
@@ -243,11 +294,11 @@
                                         <a href="books-media-detail-v2.html"><img src="images/books-media/layout-3/books-media-layout3-01.jpg" alt="Book"></a>
                                         <figcaption>
                                             <header>
-                                                <h4><a href="books-media-detail-v2.html">The Great Gatsby</a></h4>
-                                                <p><strong>Author:</strong>  F. Scott Fitzgerald</p>
-                                                <p><strong>ISBN:</strong>  9781581573268</p>
+                                                <h4><a href="books-media-detail-v2.html">{{ $book->name }}</a></h4>
+                                                <p><strong>Author:</strong>{{ $book->Author }} </p>
+                                                
                                             </header>
-                                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
+                                            <p>{{ $book->description }}</p>
                                             <div class="actions">
                                                 <ul>
                                                     <li>
@@ -259,7 +310,12 @@
                                                         status
                                                     </li>
                                                     <li>
-                                                        <a href="">Borrow</a>
+                                                        {{-- <a href="#requestModal{{ $book->id }}">Borrow</a> --}}
+                                                        <p id="myBtn" class="borrow">Borrow</p>
+                                                        {{-- <button id="myBtn">Open Modal</button> --}}
+                                                        
+                                                        <!-- The Modal -->
+                                                        
                                                     </li>
                                                 </ul>
                                             </div>
@@ -268,14 +324,47 @@
                                 </li>
                             </ul>
                         </div><!--booksmedia-fullwidth-->
+                        <div id="myModal" class="modal">
 
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                Request for <mark>{{ $book->name }}</mark>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                               
+                                <div class="modal-body">
+                                  <form action="{{ route('books.borrow.request', $book->id) }}" method="get">
+                                    @csrf
+                                    
+            
+                                    <textarea name="user_message" id="user_message" class="form-control" rows="5" placeholder="Enter your message (Keep empty if there is no message)" ></textarea>
+                                    <button type="submit" class="btn btn-success mt-4">
+                                        <i class="fa fa-send"></i> Send Request Now
+                                      </button>
+                                      <button type="button" class="btn btn-secondary mt-4" data-dismiss="modal">Cancel</button>
+                                    </form>
+                                </div>    
+
+                            </div>
+
+                        </div>
+
+                        @endforeach
                     </div><!--End container-->
                 </div><!--End books-media-gird-->
             </main><!--End site-main-->
         </div><!--End content-area-->
     </div><!--End site-content-->
+     
+   
 
     @include('footer')
+
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
 
     
     <!-- jQuery Latest Version 1.x -->
@@ -322,5 +411,33 @@
     <script src="js/main.js"></script>
 
     <script src="https://kit.fontawesome.com/ff2d286ff7.js" crossorigin="anonymous"></script>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+        
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+        </script>
 </body>
 </html>
