@@ -21,9 +21,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () { 
+//     return view('welcome');
+// });
+
+Route::get('/',[bookController::class, 'welcomeNewBooks'])->name('user.welcome');
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
     Route::get('/', [timeTableController::class, 'index']);
@@ -33,13 +35,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
 
 // Route::get('/admin', [timeTableController::class, 'index']);
 Route::get('/listed-Books',[bookController::class, 'adminBookList'])->name('admin.book.list');
+Route::get('/addBook',[bookController::class, 'getLastBookId'])->name('admin.addbook.page');
 
 Route::view('/damaged-Books','admin/pages/damagedBooks');
 Route::view('/issued-Books','admin/pages/issuedBooks');
 Route::view('/borrow-req-Books','admin/pages/borrowReq');
-Route::view('/addBook','admin/pages/addNewBook');
 
 Route::get('/books-gride',[bookController::class, 'userBookList'])->name('user.book.view');
+Route::post('/search-book',[bookController::class, 'bookSearch'])->name('book.search');
 
 Route::view('/subject-books','sub-books');
 

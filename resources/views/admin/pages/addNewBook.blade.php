@@ -224,7 +224,8 @@
                                 <form method="POST" action="{{ route('book.add_newbook') }}">
                                     @csrf
                                   <div class="card-body">
-                                    <p>Last Registered Book ID: </p>
+                                    <p style="float:left;" class="mr-2">Last Registered Book ID:</p>
+                                    <p style="color: red;">{{ $lastBookId }}</p>
                                     <div class="form-group">
                                       <label for="bookId">Book ID</label>
                                       <input type="text" name="bookid" class="form-control" id="bookId" placeholder="Enter book Id" required>

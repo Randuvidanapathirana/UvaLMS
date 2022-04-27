@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class bookController extends Controller
 {
+
+    public function getLastBookId()
+    {
+        $lastBookId = Book::all()->last()->book_id;
+        return view('admin.pages.addNewbook', compact('lastBookId'));
+    }
+
     public function addNewBook(Request $request)
     {
         $book = new Book;
@@ -30,6 +37,18 @@ class bookController extends Controller
     public function userBookList()
     {
         $books = Book::all();
+        return view('books-gride-view', compact('books'));
+    }
+
+    public function welcomeNewBooks()
+    {
+        $books = Book::latest()->limit(4)->get();
+        return view('welcome', compact('books'));
+    }
+
+    public function bookSearch(Request $request)
+    {
+        $books = Book::where('category_id', $request->category)->get();
         return view('books-gride-view', compact('books'));
     }
 }

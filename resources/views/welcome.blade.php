@@ -214,7 +214,8 @@
                 <h3 style="margin-bottom: 0%;">What are you looking for at the library?</h3>
                 <h3 style="margin-bottom: 0%; font-size: 22pt;" >ඔබ පුස්තකාලයේ සොයන්නේ කුමක්ද?</h3>
                 <h3 style="font-size: 17pt;">நூலகத்தில் என்ன தேடுகிறீர்கள்?</h3>
-                <form action="#" method="get">
+                <form action="{{ route('book.search') }}" method="post">
+                    @csrf
                     <div class="col-md-2 col-sm-6"></div>
                     <div class="col-md-4 col-sm-6">
                         <div class="form-group">
@@ -225,7 +226,7 @@
                     <div class="col-md-3 col-sm-6">
                         <div class="form-group">
                             <select name="category" id="category" class="form-control">
-                                <option value="000" disabled="disabled">All Categories</option>
+                                <option disabled="disabled">All Categories</option>
                                 <option value="100">General Books|සාමාන්‍ය කෘති</option>
                                 <option value="200">Philosophy and Psychology|<br>දර්ශනය සහ මනෝ විද්‍යාව</option>
                                 <option value="300">Religion|ආගම</option>
@@ -323,222 +324,43 @@
         <div class="container">
             <div class="row">
                 <div class="center-content">
-                    <h2 class="section-title">New Releases | නව නිකුත්වූ | புதிய வெளியீடுகள்</h2>
+                    <h2 class="section-title">New | නව | புதிய</h2>
                     <span class="underline center"></span>
-                    <p class="lead"></p>
-                </div>
-                <div class="filter-buttons">
-                    <div class="filter btn" data-filter="all">All Releases</div>
-                    <div class="filter btn" data-filter=".adults">Adults</div>
-                    <div class="filter btn" data-filter=".kids-teens">Kids &amp; Teens</div>
-                    <div class="filter btn" data-filter=".video">Video</div>
-                    <div class="filter btn" data-filter=".audio">Audio</div>
-                    <div class="filter btn" data-filter=".books">Books</div>
-                    <div class="filter btn" data-filter=".magazines">Magazines</div>
                 </div>
                 <div id="category-filter">
                     <ul class="category-list">
-                        <li class="category-item adults">
-                            <figure>
-                                <img src="images/category-filter/home-v2/category-filter-img-01.jpg" alt="New Releaase" />
-                                <figcaption class="bg-yellow">
-                                    <div class="diamond">
-                                        <i class="book"></i>
-                                    </div>
-                                    <div class="info-block">
-                                        <h4>The Great Gatsby</h4>
-                                        <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                        <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                        <div class="rating">
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
+                        @foreach ($books as $book)
+                            <li class="category-item">
+                                <figure>
+                                    <img src="{{ $book->book_image }}" alt="New Releaase" />
+                                    <figcaption class="bg-red">
+                                        <div class="diamond">
+                                            <i class="book"></i>
                                         </div>
-                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                        <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </li>
-                        <li class="category-item kids-teens">
-                            <figure>
-                                <img src="images/category-filter/home-v2/category-filter-img-02.jpg" alt="New Releaase" />
-                                <figcaption class="bg-yellow">
-                                    <div class="diamond">
-                                        <i class="book"></i>
-                                    </div>
-                                    <div class="info-block">
-                                        <h4>The Great Gatsby</h4>
-                                        <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                        <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                        <div class="rating">
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
+                                        <div class="info-block">
+                                            <h4>{{ $book->book_name }}</h4>
+                                            <p>Book Id: {{ $book->book_id }}</p>
+                                            <span class="author"><strong>Author:</strong> {{ $book->author_name }}</span>
+                                            <div class="rating">
+                                                <span>☆</span>
+                                                <span>☆</span>
+                                                <span>☆</span>
+                                                <span>☆</span>
+                                                <span>☆</span>
+                                            </div>
+                                            <p>{{ $book->book_desc }}</p>
+                                            @if ( $book->status == "0")
+                                                <p style="color: green">Book is Available to borrow</p>
+                                            @else
+                                                <p style="color: red"> Book is Not Available to borrow</p>
+                                            @endif
+                                            <a href="">Borrow <i class="fa fa-long-arrow-right"></i></a>
                                         </div>
-                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                        <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                                        
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </li>
-                        <li class="category-item video">
-                            <figure>
-                                <img src="images/category-filter/home-v2/category-filter-img-03.jpg" alt="New Releaase" />
-                                <figcaption class="bg-blue">
-                                    <div class="diamond">
-                                        <i class="dvd"></i>
-                                    </div>
-                                    <div class="info-block">
-                                        <h4>The Great Gatsby</h4>
-                                        <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                        <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                        <div class="rating">
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                        </div>
-                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                        <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                                        
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </li>
-                        <li class="category-item audio">
-                            <figure>
-                                <img src="images/category-filter/home-v2/category-filter-img-04.jpg" alt="New Releaase" />
-                                <figcaption class="bg-blue">
-                                    <div class="diamond">
-                                        <i class="dvd"></i>
-                                    </div>
-                                    <div class="info-block">
-                                        <h4>The Great Gatsby</h4>
-                                        <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                        <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                        <div class="rating">
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                        </div>
-                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                        <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                                        
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </li>
-                        <li class="category-item books">
-                            <figure>
-                                <img src="images/category-filter/home-v2/category-filter-img-05.jpg" alt="New Releaase" />
-                                <figcaption class="bg-green">
-                                    <div class="diamond">
-                                        <i class="eaudio"></i>
-                                    </div>
-                                    <div class="info-block">
-                                        <h4>The Great Gatsby</h4>
-                                        <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                        <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                        <div class="rating">
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                        </div>
-                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                        <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                                        
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </li>
-                        <li class="category-item magazines">
-                            <figure>
-                                <img src="images/category-filter/home-v2/category-filter-img-06.jpg" alt="New Releaase" />
-                                <figcaption class="bg-red">
-                                    <div class="diamond">
-                                        <i class="magazine"></i>
-                                    </div>
-                                    <div class="info-block">
-                                        <h4>The Great Gatsby</h4>
-                                        <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                        <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                        <div class="rating">
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                        </div>
-                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                        <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                                        
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </li>
-                        <li class="category-item adults">
-                            <figure>
-                                <img src="images/category-filter/home-v2/category-filter-img-07.jpg" alt="New Releaase" />
-                                <figcaption class="bg-red">
-                                    <div class="diamond">
-                                        <i class="magazine"></i>
-                                    </div>
-                                    <div class="info-block">
-                                        <h4>The Great Gatsby</h4>
-                                        <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                        <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                        <div class="rating">
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                        </div>
-                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                        <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                                        
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </li>
-                        <li class="category-item kids-teens">
-                            <figure>
-                                <img src="images/category-filter/home-v2/category-filter-img-08.jpg" alt="New Releaase" />
-                                <figcaption class="bg-light-green">
-                                    <div class="diamond">
-                                        <i class="ebook"></i>
-                                    </div>
-                                    <div class="info-block">
-                                        <h4>The Great Gatsby</h4>
-                                        <span class="author"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                        <span class="author"><strong>ISBN:</strong> 9781581573268</span>
-                                        <div class="rating">
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                            <span>☆</span>
-                                        </div>
-                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                        <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                                        
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </li>
+                                    </figcaption>
+                                </figure>
+                            </li>
+                        @endforeach
                     </ul>
-                    <div class="clearfix"></div>
                 </div>
             </div>
         </div>
@@ -591,7 +413,7 @@
                                 <div class="fact-icon">
                                     <i class="eaudio"></i>
                                 </div>
-                                <span>eAudio<strong class="fact-counter">850</strong></span>
+                                <span>eAudio<strong class="fact-counter">250</strong></span>
                             </div>
                         </li>
                         <li class="color-red">
@@ -599,7 +421,7 @@
                                 <div class="fact-icon">
                                     <i class="magazine"></i>
                                 </div>
-                                <span>Magazine<strong class="fact-counter">1000</strong></span>
+                                <span>Magazine<strong class="fact-counter">200</strong></span>
                             </div>
                         </li>
                         <li class="color-blue">
@@ -607,7 +429,7 @@
                                 <div class="fact-icon">
                                     <i class="videos"></i>
                                 </div>
-                                <span>DVDs<strong class="fact-counter">100</strong></span>
+                                <span>DVDs<strong class="fact-counter">50</strong></span>
                             </div>
                         </li>
                     </ul>

@@ -159,7 +159,7 @@
                                         <h3 style="margin-bottom: 0%;">What are you looking for at the library?</h3>
                                         <h3 style="margin-bottom: 0%; font-size: 22pt;" >ඔබ පුස්තකාලයේ සොයන්නේ කුමක්ද?</h3>
                                         <h3 style="font-size: 17pt;">நூலகத்தில் என்ன தேடுகிறீர்கள்?</h3>
-                                        <form action="#" method="get">
+                                        <form action="{{ route('book.search') }}" method="post">
                                             <div class="col-md-2 col-sm-6"></div>
                                             <div class="col-md-4 col-sm-6">
                                                 <div class="form-group">
@@ -171,15 +171,15 @@
                                                 <div class="form-group">
                                                     <select name="category" id="category" class="form-control">
                                                         <option value="" disabled="disabled">All Categories</option>
-                                                        <option value="">General Books|සාමාන්‍ය කෘති</option>
-                                                        <option value="">Philosophy and Psychology|<br>දර්ශනය සහ මනෝ විද්‍යාව</option>
-                                                        <option value="">Religion|ආගම</option>
-                                                        <option value="">Language|භාෂාව</option>
-                                                        <option value="">Natural science and maths|<br>ස්වාභාව විද්‍යාව සහ ගණිතය</option>
-                                                        <option value="">Technology|තාක්ෂණ විද්‍යා</option>
-                                                        <option value="">Art|කලා</option>
-                                                        <option value="">Literature|සාහිත්‍ය</option>
-                                                        <option value="">Geography|භූගෝල විද්‍යාව</option>
+                                                        <option value="100">General Books|සාමාන්‍ය කෘති</option>
+                                                        <option value="200">Philosophy and Psychology|<br>දර්ශනය සහ මනෝ විද්‍යාව</option>
+                                                        <option value="300">Religion|ආගම</option>
+                                                        <option value="400">Language|භාෂාව</option>
+                                                        <option value="500">Natural science and maths|<br>ස්වාභාව විද්‍යාව සහ ගණිතය</option>
+                                                        <option value="600">Technology|තාක්ෂණ විද්‍යා</option>
+                                                        <option value="700">Art|කලා</option>
+                                                        <option value="800">Literature|සාහිත්‍ය</option>
+                                                        <option value="900">Geography|භූගෝල විද්‍යාව</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -195,17 +195,18 @@
                             <!-- /Search Section -->
                         </div><!--End row-->
 
-                        @foreach ($books as $book)
                             <!--single book-->
                             <div class="booksmedia-fullwidth">
                                 <ul>
+                                    @foreach ($books as $book)
                                     <li>
                                         <div class="book-list-icon yellow-icon"></div>
                                         <figure>
                                             <a href="books-media-detail-v2.html"><img src="{{ $book->book_image }}" alt="Book"></a>
                                             <figcaption>
                                                 <header>
-                                                    <h4><a href="books-media-detail-v2.html">{{ $book->book_name }}</a></h4>
+                                                    <h4><a href="#">{{ $book->book_name }}</a></h4>
+                                                    <p><strong>Book ID:</strong> {{ $book->book_id }}</p>
                                                     <p><strong>Author:</strong>{{ $book->author_name }}</p>
                                                 </header>
                                                 <p>{{ $book->book_desc }}</p>
@@ -229,9 +230,9 @@
                                             </figcaption>
                                         </figure>                                                
                                     </li>
+                                    @endforeach
                                 </ul>
                             </div><!--booksmedia-fullwidth-->
-                        @endforeach
 
                     </div><!--End container-->
                 </div><!--End books-media-gird-->
