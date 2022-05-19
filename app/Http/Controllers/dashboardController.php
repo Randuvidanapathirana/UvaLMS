@@ -5,31 +5,38 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\BookRequest;
+use App\Models\students;
+
 
 
 class dashboardController extends Controller
 {
 
-    public function requestBook(Request  $id)
+    public function requestBook(Request  $request)
     {
-       $book = Book::where('id', $id)->get();
-
-         if (!is_null($book)) {
-           $book_request = new BookRequest();
-           $book_request->book_id = $book->id;
-           $book_request->book_name = "Boo1";
-           $book_request->user_id = 10;
-           $book_request->is_approved = 0;
-           $book_request->user_name = "Moda randula";
-           $book_request->user_message = "I want to borrow this book";
-           $book_request->status = 1;
-           $book_request->save();
-            
-            session()->flash('success', 'Book Request successfully sent !!');
-            return redirect()->back();
-        }else{
-            session()->flash('error', 'No book found !!');
-            return "error";
+        $student = students::where('Stu_Id', $request->input('student_id'))->first();
+        if(!is_null($student)){
+            $stid = $student->Stu_Id;
+            $stname = $student->First_Name;
         }
+        $book_request = new BookRequest();
+        $book_request->book_id = $request->input('book_id');
+        $book_request->book_name = $request->input('book_name');
+        $book_request->user_id = $stid;
+        $book_request->user_name = $stname;
+        $book_request->user_message = $request->input('user_message');
+        $book_request->save();
+        
+        $book = Book::where('book_id', $request->input('book_id'))->first();
+        if (!is_null($book)) {
+            $book->status = 1;
+            $book->save();
+        }
+        session()->flash('success', 'Book Request successfully sent !!');
+        return redirect()->route('books.request');
     }
+
+    
+
+   
 }

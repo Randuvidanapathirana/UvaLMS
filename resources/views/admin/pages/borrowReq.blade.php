@@ -18,6 +18,36 @@
   <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+
+    <style>
+        /* alert box */
+
+        .alert {
+       
+        background-color: #36cbf4;
+        color: rgba(255, 255, 255, 0.932);
+        width: 100%;
+        height:1cm;
+        }
+        
+
+        .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 30px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        }
+
+        .closebtn:hover {
+        color: black;
+        }
+
+    </style>
+
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -203,14 +233,11 @@
             @endif
             
             @if(Session::has('success'))
-                <div class="alert alert-success">
+                <div class="alert">
                     <p>
                         {{ Session::get('success') }}
-                        <button type="button" class="close" data-dismiss="alert"  aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
                     </p>
-            
                 </div>
             @endif
 
@@ -255,28 +282,33 @@
                                                 <td>{{ $book->book_name }}</td>
                                                 <td>
                                                 
-                                                    @if ($book->is_approved)
-                                                        <span class="badge badge-success">
-                                                        <i class="fa fa-check"></i> Approved
+                                                    @if ($book->is_approved == 1)
+                                                            <span class="badge badge-success">
+                                                                 <i class="fa fa-check"></i> Approved
+                                                            </span>
+                                                    @elseif ($book->is_approved == 2)
+                                                        <span class="badge badge-warning">
+                                                            <i class="fa fa-times"></i> Declined
                                                         </span>
                                                     @else
                                                         <span class="badge badge-danger">
-                                                        <i class="fa fa-times"></i> Not Approved
+                                                                <i class="fa fa-times"></i> Not Approved
                                                         </span>
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    
+                                                    @if ($book->is_approved == 0)
                                                         <form action="{{ route('admin.books.approve', $book->id) }}" method="post">
                                                             @csrf 
-                                                            <button class="btn btn-success">Confirm </button>
+                                                            <button class="btn btn-success btn-sm" style="float: left;">Confirm </button>
                                                         </form>
-                                                        
-                                                        <form action="{{ route('admin.books.unapprove', $book->id) }}" method="post">
+                                                        <form action="{{ route('admin.books.unapprove', $book->book_id) }}" method="post">
                                                             @csrf
-                                                            <button class="btn btn-danger" >Disline </button>
+                                                            <button class="btn btn-danger btn-sm">Decline </button>
                                                         </form>
-                                                        
+                                                    @else
+                                                        <i class="fa fa-check"></i>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach

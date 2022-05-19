@@ -38,13 +38,21 @@ Route::post('/approve/{id}', [BookController::class,'approve'])->name('admin.boo
 Route::post('/unapprove/{id}',[BookController::class,'unapprove'])->name('admin.books.unapprove');
 
 Route::get('/books-gride',[BookController::class,'displayBook'])->name('books.request');
-Route::get('/books-borrow-req',[dashboardController::class,'requestBook'])->name('books.borrow.request');
+Route::post('/books-borrow-req',[dashboardController::class,'requestBook'])->name('books.borrow.request');
+Route::post('/borrow-req-Books',[dashboardController::class,'borrowBook'])->name('books.borrow.sent');
+
+Route::get('/borrow-confirm/{id}', [BookController::class,'borrowConfirm'])->name('admin.books.borrowConfirm');
+Route::get('/issued-Books',[BookController::class,'issuedBook'])->name('admin.books.issued');
+Route::post('/return-book/{id}',[BookController::class,'returnBook'])->name('admin.books.return');
+Route::post('/missing-book/{id}',[BookController::class,'missingBook'])->name('admin.books.missing');
+
 
 
 
 Route::view('/listed-Books','admin/pages/listedBook');
 Route::view('/damaged-Books','admin/pages/damagedBooks');
-Route::view('/issued-Books','admin/pages/issuedBooks');
+
+// Route::view('/issued-Books','admin/pages/issuedBooks');
 //Route::view('/borrow-req-Books','admin/pages/borrowReq');
 Route::view('/addBook','admin/pages/addNewBook');
 //Route::view('/books-gride','books-gride-view');

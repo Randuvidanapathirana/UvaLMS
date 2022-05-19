@@ -216,40 +216,55 @@
                                     <thead>
                                         <tr>
                                             <th>Student Id</th>
-                                            <th>Student Name</th>
-                                            <th>Book ID</th>
+                                            <th>Book Id</th>
                                             <th>Book Name</th>
-                                            <th>Borrowed Date</th>
+                                            <th>Borrow Date</th>
                                             <th>Return Date</th>
+                                            <th>New Return Date</th>
+                                            <th>Status</th>
                                             <th>Option</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>St001</td>
-                                            <td>Student name</td>
-                                            <td>Book1</td>
-                                            <td>Book Name</td>
-                                            <td>12/03/2022</td>
-                                            <td>26/03/2022</td>
-                                            <td>
-                                                <button class="btn btn-success">Return</button>
-                                                <button class="btn btn-warning">Extend return Date</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>St004</td>
-                                            <td>Student name</td>
-                                            <td>Book6</td>
-                                            <td>book name</td>
-                                            <td>2/03/2022</td>
-                                            <td>16/03/2022</td>
-                                            <td>
-                                                <button class="btn btn-success">Return</button>
-                                                <button class="btn btn-warning">Extend return Date</button>
-                                            </td>
-                                            </td>
-                                        </tr>
+                                        @foreach ($books as $book)
+                                            <tr>
+                                                <td>{{ $book->Book_Id }}</td>
+                                                <td>{{ $book->User_Id }}</td>
+                                                <td>{{ $book->Book_Name }}</td>
+                                                <td>{{ $book->Borrow_Date }}</td>
+                                                <td>{{ $book->Return_Date }}</td>
+                                                <td>{{ $book->New_Return_Date }}</td>
+                                                <td>
+                                                    @if ($book->status == 1)
+                                                            <span class="badge badge-danger">
+                                                                 <i class="fa fa-times"></i> Not returned
+                                                            </span>
+                                                    @elseif ($book->status == 2)
+                                                        <span class="badge badge-warning">
+                                                            <i class="fa fa-times"></i> Payed
+                                                        </span>
+                                                    @else
+                                                        <span class="badge badge-success">
+                                                                <i class="fa fa-check"></i> Returned
+                                                        </span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($book->status == 1)
+                                                        <form action="{{ route('admin.books.return', $book->Book_Id) }}" method="post">
+                                                            @csrf 
+                                                            <button class="btn btn-success btn-sm" style="float: left;">Return </button>
+                                                        </form>
+                                                        <form action="{{ route('admin.books.missing', $book->Book_Id) }}" method="post">
+                                                            @csrf
+                                                            <button class="btn btn-danger btn-sm">Missing </button>
+                                                        </form>
+                                                    @else
+                                                        <i class="fa fa-check"></i>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
